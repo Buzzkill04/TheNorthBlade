@@ -6,48 +6,42 @@ using UnityEngine.Events;
 //Class based off brackeys 2d character controller https://github.com/Brackeys/2D-Character-Controller
 public class CharacterController2D : MonoBehaviour
 {
-
-    [SerializeField] private float jumpForce = 400f;	// Amount of force added when the player jumps.
-
-    [SerializeField] private bool airControl = true;	// Whether or not a player can steer while jumping;
-
-    [SerializeField] private LayerMask whatIsGround;	// A mask determining what is ground to the character   
-
-    [SerializeField] private Transform groundCheck;     // A position marking where to check if the player is grounded.
-
-    [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f; //Movement smoothing
-
-    const float groundedRadius = 0.2f;                  // Radius of the overlap circle to determine if grounded
-
-    private bool grounded;                              // Whether or not the player is grounded.
-
-    private bool facingRight = true;                    // For determining which way the player is currently facing.
-
+    //Amount of force added when the player jumps.
+    [SerializeField] private float jumpForce = 400f;
+    //Whether or not a player can steer while jumping;
+    [SerializeField] private bool airControl = true;
+    //A mask determining what is ground to the character  
+    [SerializeField] private LayerMask whatIsGround;
+    //A position marking where to check if the player is grounded.
+    [SerializeField] private Transform groundCheck;
+    //Movement smoothing
+    [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
+    //Radius of the overlap circle to determine if grounded
+    const float groundedRadius = 0.2f;
+    //Whether or not the player is grounded.
+    private bool grounded;
+    //For determining which way the player is currently facing.
+    private bool facingRight = true;                    
+    //Create a zero (0, 0, 0) vector 3
     private Vector3 velocity = Vector3.zero;
-
-    private Rigidbody2D characterRigidBody2D;           // stores the rigidbody of the character sprite
-
-    public UnityEvent OnLandEvent;                      // Invokes methods when the player lands
-
-    
-                                                        
+    //Stores the rigidbody of the character sprite
+    private Rigidbody2D characterRigidBody2D;
+    //Invoked when the player lands
+    public UnityEvent OnLandEvent;
 
     // Awake is called when the script instance is being loaded
     private void Awake()
     {
+        //Get the rigid body component of the sprite the script is attached to.
         characterRigidBody2D = GetComponent<Rigidbody2D>();
-
-        if (OnLandEvent == null)
-        {
-            OnLandEvent = new UnityEvent();
-        }
     }
-
-    // Fixed update is called every fixed framerate based off the physics engine
+    //Called at a fixed frame rate, linked to the physics system
     private void FixedUpdate()
     {
+        //make a copy of the grounded status and set grounded to false
         bool wasGrounded = grounded;
         grounded = false;
+        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
         foreach (var item in colliders)
         {
@@ -59,7 +53,6 @@ public class CharacterController2D : MonoBehaviour
             }
         }
     }
-
     public void Move(float move, bool jump)
     {
         if (grounded || airControl)
@@ -75,17 +68,17 @@ public class CharacterController2D : MonoBehaviour
                 // flip the player.
                 Flip();
             }
-            // Otherwise if the input is moving the player left and the player is facing right...
+            // Otherwise if the input is moving the player left and the player is facing right
             else if (move < 0 && facingRight)
             {
                 // flip the player.
                 Flip();
             }
         }
-        // If the player should jump...
+        // If the player should jump
         if (grounded && jump)
         {
-            // Add a vertical force to the player.
+            // Add a vertical force to the player
             grounded = false;
             characterRigidBody2D.AddForce(new Vector2(0f, jumpForce));
         }
@@ -95,7 +88,7 @@ public class CharacterController2D : MonoBehaviour
         // Switch the way the player is labelled as facing.
         facingRight = !facingRight;
 
-        // Multiply the player's x local scale by -1.
+        // Multiply the player's x local scale by -1. (flip)
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
