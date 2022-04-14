@@ -29,7 +29,7 @@ public class CharacterController2D : MonoBehaviour
     //Invoked when the player lands
     public UnityEvent OnLandEvent;
 
-    // Awake is called when the script instance is being loaded
+    //Awake is called when the script instance is being loaded
     private void Awake()
     {
         //Get the rigid body component of the sprite the script is attached to.
@@ -41,7 +41,7 @@ public class CharacterController2D : MonoBehaviour
         //make a copy of the grounded status and set grounded to false
         bool wasGrounded = grounded;
         grounded = false;
-        // The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
+        //The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
         foreach (var item in colliders)
         {
@@ -57,40 +57,49 @@ public class CharacterController2D : MonoBehaviour
     {
         if (grounded || airControl)
         {
-            // Move the character by finding the target velocity
+            //Move the character by finding the target velocity
             Vector3 targetVelocity = new Vector2(move * 10f, characterRigidBody2D.velocity.y);
-            // And then smoothing it out and applying it to the character
+            //And then smoothing it out and applying it to the character
             characterRigidBody2D.velocity = Vector3.SmoothDamp(characterRigidBody2D.velocity, targetVelocity, ref velocity, movementSmoothing);
 
-            // If the input is moving the player right and the player is facing left
+            //If the input is moving the player right and the player is facing left
             if (move > 0 && !facingRight)
             {
                 // flip the player.
                 Flip();
             }
-            // Otherwise if the input is moving the player left and the player is facing right
+            //Otherwise if the input is moving the player left and the player is facing right
             else if (move < 0 && facingRight)
             {
-                // flip the player.
+                //flip the player.
                 Flip();
             }
         }
-        // If the player should jump
+        //If the player should jump
         if (grounded && jump)
         {
-            // Add a vertical force to the player
+            //Add a vertical force to the player
             grounded = false;
             characterRigidBody2D.AddForce(new Vector2(0f, jumpForce));
         }
     }
     private void Flip()
     {
-        // Switch the way the player is labelled as facing.
+        //Switch the way the player is labelled as facing.
         facingRight = !facingRight;
 
-        // Multiply the player's x local scale by -1. (flip)
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
+        //Rotate the character about the y axis, 180 degrees
+        transform.Rotate(0f, 180f, 0f);
     }
+
+
+    //Debug
+    private void OnDrawGizmosSelected()
+    {
+        if (groundCheck == null)
+            return;
+
+        Gizmos.DrawWireSphere(groundCheck.position, groundedRadius);
+    }
+
 }
