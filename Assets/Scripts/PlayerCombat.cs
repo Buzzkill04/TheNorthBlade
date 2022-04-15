@@ -4,32 +4,42 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    //Reference to PlayerMovement Script to access methods contained inside
+    private PlayerMovement playerMovementScript;
+    //Reference to PlayerMovement Script to access methods contained inside
+    private PlayerLife playerLifeScript;
     //Animator component of the sprite
-    public Animator animator;
+    private Animator animator;
     //The point in which a circle detecting enemies will be created
     public Transform AttackArea;
     //The layer in which enemies will be searched for
     public LayerMask enemyLayer;
     //The range of the attack
     public float attackRange = 0.5f;
+    //Character damage amount
+    public float playerAttackDamage = 30f;
     //Characters ability process
     public int characterAbilityStatus = 0;
     //The character type, will be chosen in the character creator
     public static string characterType;
-    //Reference to PlayerMovement Script to access methods contained inside
-    private PlayerMovement playerMovementScript;
 
+    
 
     // Start is called before the first frame update
     void Start()
     {
         //Get the playerMovement script that is connected to the game object the script is attached to.
         playerMovementScript = GetComponent<PlayerMovement>();
+        //Get the playerLife script that is connected to the game object the script is attached to.
+        playerLifeScript = GetComponent<PlayerLife>();
+        //Set the animator variable to the playerMovement scripts animator.
+        animator = playerMovementScript.animator;
     }
 
     // Update is called once per frame
     void Update()
     {
+        playerAttackDamage *= playerLifeScript.playerStrength;
         //If the player presses q and they are not currently jumping
         if (Input.GetButtonDown("Attack") && !animator.GetBool("Jump"))
         {
@@ -70,12 +80,11 @@ public class PlayerCombat : MonoBehaviour
             Destroy(enemy.GetComponent<BoxCollider2D>());
             //Increment the character ability status
             characterAbilityStatus++;
+            //Increment playerXP, amount of enemies killed and increase the player's strength by 0.2
+            playerLifeScript.playerXP++;
+            playerLifeScript.enemiesKilled++;
+            playerLifeScript.playerStrength += 0.2f;
         }
-    }
-
-    void TakeDamage()
-    {
-        //set damaged animator paramater take away HP
     }
 
     //Debug

@@ -49,11 +49,5 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    public void PlayerDeath()
-    {
-        //Start the death animation
-        animator.SetTrigger("Death");
-        //Destroy the script so that update method stops running 
-        Destroy(this);
-    }
+
 }
