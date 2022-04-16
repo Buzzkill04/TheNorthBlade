@@ -94,6 +94,7 @@ public class CharacterController2D : MonoBehaviour
 
 
     //Debug
+    /*
     private void OnDrawGizmosSelected()
     {
         if (groundCheck == null)
@@ -101,5 +102,5 @@ public class CharacterController2D : MonoBehaviour
 
         Gizmos.DrawWireSphere(groundCheck.position, groundedRadius);
     }
-
+    */
 }

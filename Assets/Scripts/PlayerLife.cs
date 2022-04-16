@@ -11,7 +11,7 @@ public class PlayerLife : MonoBehaviour
     //Players XP
     public float playerXP = 0f;
     //Players health
-    public float playerHealth = 100;
+    public float playerHealth = 100f;
     //Players Strength
     public float playerStrength = 1f;
     //Amount of enemies the player has killed
@@ -29,7 +29,9 @@ public class PlayerLife : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Set the animator Health parameter to the players current health every fram
         animator.SetFloat("Health", playerHealth);
+        //Check if the player health drops below 0
         if (playerHealth <= 0)
         {
             PlayerDeath();

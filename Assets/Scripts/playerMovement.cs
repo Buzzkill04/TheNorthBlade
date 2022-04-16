@@ -9,13 +9,21 @@ public class PlayerMovement : MonoBehaviour
     //Horizontal move will become +ve (1) when moving right and -ve (-1) when moving left, will be 0 when still.
     float horizontalMove = 0f;
     //Speed the character will move at
-    public float movementSpeed = 30f;
-    //temporary, will be changed depending on what the character selects
-    public string characterType = "swordsman";
+    public float movementSpeed = 10f;
+    //Players selected character type
+    public string characterType;
     //If the player is jumping
     bool jump = false;
     //Character animator
     public Animator animator;
+    //Rigidbody
+    private Rigidbody2D charRB;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+        charRB = GetComponent<Rigidbody2D>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -27,10 +35,15 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+        }
+        //if the character is falling or jumping set the animator parameters jump to true and grounded to false
+        if (charRB.velocity.y != 0)
+        {
             animator.SetBool("Jump", true);
             animator.SetBool("Grounded", false);
-        }
+        }        
     }
+
     // Fixed update is called every fixed framerate based off the physics engine
     private void FixedUpdate()
     {
@@ -39,6 +52,11 @@ public class PlayerMovement : MonoBehaviour
         //Set jump to false so that the character doesnt continue, to jump.
         jump = false;
     }
+    //Used to set the movement speed from an animation event
+    public void SetSpeed(float speed)
+    {
+        movementSpeed = speed;
+    }
 
     //This will be triggered when the character lands through the OnLandEvent unity event
     public void OnPlayerLand()
@@ -46,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
         //Animation handling
         animator.SetBool("Jump", false);
         animator.SetBool("Grounded", true);
-        
+
     }
 
 
