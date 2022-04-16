@@ -10,6 +10,8 @@ public class PlayerLife : MonoBehaviour
     private Animator animator;
     //Players XP
     public float playerXP = 0f;
+    //Players level
+    public int playerLevel = 1;
     //Players health
     public float playerHealth = 100f;
     //Players Strength
@@ -24,6 +26,7 @@ public class PlayerLife : MonoBehaviour
         playerMovementScript = GetComponent<PlayerMovement>();
         //Set the animator variable to the playerMovement scripts animator.
         animator = playerMovementScript.animator;
+        playerHealth *= playerLevel;
     }
 
     // Update is called once per frame
@@ -35,6 +38,11 @@ public class PlayerLife : MonoBehaviour
         if (playerHealth <= 0)
         {
             PlayerDeath();
+        }
+        if (playerXP == 10)
+        {
+            playerLevel++;
+            playerXP = 0;
         }
     }
 
