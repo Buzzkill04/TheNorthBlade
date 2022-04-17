@@ -10,8 +10,6 @@ public class PlayerMovement : MonoBehaviour
     float horizontalMove = 0f;
     //Speed the character will move at
     public float movementSpeed = 10f;
-    //Players selected character type
-    public string characterType;
     //If the player is jumping
     bool jump = false;
     //Character animator

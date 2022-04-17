@@ -22,5 +22,6 @@ public class Enemy : MonoBehaviour
     public void EnemyDeath()
     {
         enemyAnimator.SetTrigger("Dead");
+        Destroy(GetComponent<BoxCollider2D>());
     }
 }

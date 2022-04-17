@@ -43,11 +43,15 @@ public class CharacterController2D : MonoBehaviour
         grounded = false;
         //The player is grounded if a circlecast to the groundcheck position hits anything designated as ground
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheck.position, groundedRadius, whatIsGround);
+        //foreach collision
         foreach (var item in colliders)
         {
+            //if the gameObject is not equal to the game object the script is applied to
             if (item.gameObject != gameObject)
             {
+                //set grounded to true
                 grounded = true;
+                //Invoke the OnLandEvent 
                 if (!wasGrounded)
                     OnLandEvent.Invoke();
             }

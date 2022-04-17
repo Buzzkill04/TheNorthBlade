@@ -20,10 +20,8 @@ public class PlayerCombat : MonoBehaviour
     public float playerAttackDamage = 30f;
     //Characters ability process
     public int characterAbilityStatus = 0;
-    //The character type, will be chosen in the character creator
-    public static string characterType;
-
-    
+    //Character type
+    private string characterType;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +32,8 @@ public class PlayerCombat : MonoBehaviour
         playerLifeScript = GetComponent<PlayerLife>();
         //Set the animator variable to the playerMovement scripts animator.
         animator = playerMovementScript.animator;
-        characterAbilityStatus = 10;
-        characterType = "sScout";
+        //Get the chosen characterType
+        characterType = playerLifeScript.characterType;
     }
 
     // Update is called once per frame
@@ -45,25 +43,20 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetButtonDown("Attack") && !animator.GetBool("Jump"))
         {
             Attack();
-
         }
         //Ability's
         if (Input.GetButtonDown("Ability") && characterAbilityStatus == 10)
         {
-            if (characterType == "swordsman")
-            {
-                //Swordsman Ability
-            }
             if (characterType == "sScout")
             {
-                SSAbility();
                 //Skeleton scout ability
+                SSAbility();
             }
             if (characterType == "wizard")
             {
                 //wizard ability
+                WIZAbility();
             }
-
         }
     }
     //Called when 'q' is pressed
@@ -71,10 +64,11 @@ public class PlayerCombat : MonoBehaviour
     {
         //Start the attack animation
         animator.SetTrigger("Attack");
+        //get all the enemies in range and kill them
         GetAndKillEnemies();
     }
     //Skeleton Scout Ability
-    void SSAbility()
+    public void SSAbility()
     {
         //Get the rigidbody component of the player
         Rigidbody2D charRB = GetComponent<Rigidbody2D>();
@@ -85,6 +79,30 @@ public class PlayerCombat : MonoBehaviour
         //reset the ability status of the player
         characterAbilityStatus = 0;
     }
+    //Swordsman ability
+    public void SMAbility()
+    {
+        //Start the recover animation
+        animator.SetTrigger("Ability");    
+        //Set the player health to 50
+        playerLifeScript.playerHealth = 50;
+        //Reset the player's ability status
+        characterAbilityStatus = 0;
+    }
+    //Wizard ability
+    public void WIZAbility()
+    {
+        //Start the ability animation
+        animator.SetTrigger("Ability");
+        //Get the fireball prefab
+        GameObject fireballPrefab = (GameObject)Resources.Load("Prefabs/Fireball");
+        //Create a new fireball prefab at the attack position
+        Instantiate(fireballPrefab, AttackArea.position, AttackArea.rotation);
+        //Reset the ability status
+        characterAbilityStatus = 0;
+    }
+
+
     //Find all the enemies in range of the attack and kill them
     void GetAndKillEnemies()
     {
