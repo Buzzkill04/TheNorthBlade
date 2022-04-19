@@ -45,7 +45,8 @@ public class PlayerCombat : MonoBehaviour
             Attack();
         }
         //Ability's
-        if (Input.GetButtonDown("Ability") && characterAbilityStatus == 10)
+        //the players level is taken away from 11 so that the more they level up they can use the ability more often
+        if (Input.GetButtonDown("Ability") && characterAbilityStatus == (11 - playerLifeScript.playerLevel))
         {
             if (characterType == "sScout")
             {
@@ -115,12 +116,12 @@ public class PlayerCombat : MonoBehaviour
             if (enemy.CompareTag("Boss"))
             {
                 //Take health from the boss
-                //enemy.GetComponent<Boss>().TakeHealth();
+                enemy.GetComponent<BossAI>().BossTakeDamage(playerAttackDamage);
             }
             else
             {
                 //Run the enemy death script
-                enemy.GetComponent<Enemy>().EnemyDeath();
+                enemy.GetComponent<EnemyAI>().EnemyDeath();
                 //Destroy the box collider so the player is able to run over the body.
                 Destroy(enemy.GetComponent<BoxCollider2D>());
                 //Increment the character ability status

@@ -12,6 +12,8 @@ public class Fireball : MonoBehaviour
     public GameObject fireballHitPrefab;
     //The amount of things the fireball has hit
     private int hitCount = 0;
+    //Fireball damage
+    private int fireballDamage = 60;
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +30,18 @@ public class Fireball : MonoBehaviour
     //Called when the fireball collides with something
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //Kill the enemy
-        collision.GetComponent<Enemy>().EnemyDeath();
+        if (collision.CompareTag("Enemy"))
+        {
+            //Kill the enemy
+            collision.GetComponent<EnemyAI>().EnemyDeath();
+        }
+        else if (collision.CompareTag("Boss"))
+        {
+            //Damage the boss
+            collision.GetComponent<BossAI>().BossTakeDamage(fireballDamage);
+        }
         //Get the position of the enemy so the hit effect can be spawned there
-        Transform enemyPos = collision.GetComponent<Transform>();
+        Transform collisionPos = collision.GetComponent<Transform>();
         //Incrememnt the hit count
         hitCount++;
         //If the fireball has hit 5 things 
@@ -40,7 +50,7 @@ public class Fireball : MonoBehaviour
             //Destroy the fireball
             Destroy(gameObject);
             //Create a clone of the fireball hit prefab.
-            Instantiate(fireballHitPrefab, enemyPos.position, enemyPos.rotation);
+            Instantiate(fireballHitPrefab, collisionPos.position, collisionPos.rotation);
         }
     }
 }

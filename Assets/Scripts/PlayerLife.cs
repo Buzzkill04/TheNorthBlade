@@ -8,8 +8,6 @@ public class PlayerLife : MonoBehaviour
     private PlayerMovement playerMovementScript;
     //Reference to PlayerMovement Script to access methods contained inside
     private PlayerCombat playerCombatScript;
-    //Reference to PlayerLife Script to access methods contained inside
-    private PlayerLife playerLifeScript;
     //Animator component of the sprite
     private Animator animator;
     //Players XP
@@ -32,8 +30,6 @@ public class PlayerLife : MonoBehaviour
         playerMovementScript = GetComponent<PlayerMovement>();
         //Get the playerCombat script that is connected to the game object the script is attached to.
         playerCombatScript = GetComponent<PlayerCombat>();
-        //Get the playerCombat script that is connected to the game object the script is attached to.
-        playerLifeScript = GetComponent<PlayerLife>();
         //Set the animator variable to the playerMovement scripts animator.
         animator = playerMovementScript.animator;
         playerHealth *= playerLevel;
@@ -49,8 +45,9 @@ public class PlayerLife : MonoBehaviour
         {
             //Start the death animation
             animator.SetTrigger("Death");
-            //If the players chosen type is swordsman and their ability is at 10
-            if (characterType == "swordsman" && playerCombatScript.characterAbilityStatus == 10)
+            //If the players chosen type is swordsman and their ability is at 11- playerlevel, so as the player
+            //levels up, the can use their ability more often
+            if (characterType == "swordsman" && playerCombatScript.characterAbilityStatus == (11 - playerLevel))
             {
                 //revive them
                 playerCombatScript.SMAbility();

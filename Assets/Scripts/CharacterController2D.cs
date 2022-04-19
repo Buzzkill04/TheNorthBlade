@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-//Class based off brackeys 2d character controller https://github.com/Brackeys/2D-Character-Controller
+//This script based off brackeys 2d character controller https://github.com/Brackeys/2D-Character-Controller
 public class CharacterController2D : MonoBehaviour
 {
     //Amount of force added when the player jumps.
@@ -15,7 +15,7 @@ public class CharacterController2D : MonoBehaviour
     //A position marking where to check if the player is grounded.
     [SerializeField] private Transform groundCheck;
     //Movement smoothing
-    [Range(0, .3f)] [SerializeField] private float movementSmoothing = .05f;
+    [Range(0, .3f)] [SerializeField] private float movementSmoothing = 0.05f;
     //Radius of the overlap circle to determine if grounded
     const float groundedRadius = 0.2f;
     //Whether or not the player is grounded.
@@ -61,11 +61,10 @@ public class CharacterController2D : MonoBehaviour
     {
         if (grounded || airControl)
         {
-            //Move the character by finding the target velocity
+            //Find the target velocity for the player 
             Vector3 targetVelocity = new Vector2(move * 10f, characterRigidBody2D.velocity.y);
-            //And then smoothing it out and applying it to the character
+            //Smoothly build up the velocity of the player to the targetVelocity
             characterRigidBody2D.velocity = Vector3.SmoothDamp(characterRigidBody2D.velocity, targetVelocity, ref velocity, movementSmoothing);
-
             //If the input is moving the player right and the player is facing left
             if (move > 0 && !facingRight)
             {

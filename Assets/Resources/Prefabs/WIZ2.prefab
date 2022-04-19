@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 4617169053731569323}
   m_Layer: 8
   m_Name: WIZ2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,8 +36,8 @@ Transform:
   m_LocalPosition: {x: -3.8, y: -0.871, z: 0}
   m_LocalScale: {x: 1.9181925, y: 1.9181925, z: 1.9181925}
   m_Children:
-  - {fileID: 4617169054751996282}
   - {fileID: 4617169054889704153}
+  - {fileID: 4617169054751996282}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -288,7 +288,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4617169053731569322}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4617169054889704152
 GameObject:
@@ -318,5 +318,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4617169053731569322}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
