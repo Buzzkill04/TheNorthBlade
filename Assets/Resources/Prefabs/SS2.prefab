@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 3858767463147549183}
   - component: {fileID: 3858767463147549182}
   - component: {fileID: 3858767463147549177}
+  - component: {fileID: 4485782489691238193}
   m_Layer: 8
   m_Name: SS2
   m_TagString: Player
@@ -290,6 +291,22 @@ MonoBehaviour:
   playerStrength: 1
   enemiesKilled: 0
   characterType: sScout
+  characterPrefab: 
+--- !u!114 &4485782489691238193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3858767463147549176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fc5cf14167ea94297d2d44ccb89054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numPinapple: 0
+  numPeach: 0
+  numStrawberry: 0
 --- !u!1 &3858767464518112896
 GameObject:
   m_ObjectHideFlags: 0

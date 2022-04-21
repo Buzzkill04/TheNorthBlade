@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4617169053731569321}
   - component: {fileID: 4617169053731569320}
   - component: {fileID: 4617169053731569323}
+  - component: {fileID: 654630600071149200}
   m_Layer: 8
   m_Name: WIZ2
   m_TagString: Player
@@ -260,6 +261,22 @@ MonoBehaviour:
   playerStrength: 1
   enemiesKilled: 0
   characterType: wizard
+  characterPrefab: 
+--- !u!114 &654630600071149200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4617169053731569319}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fc5cf14167ea94297d2d44ccb89054, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numPinapple: 0
+  numPeach: 0
+  numStrawberry: 0
 --- !u!1 &4617169054751996277
 GameObject:
   m_ObjectHideFlags: 0

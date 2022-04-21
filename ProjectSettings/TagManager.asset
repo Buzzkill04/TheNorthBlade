@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Boss
+  - StoryItem
+  - Peach
+  - Strawberry
+  - Pineapple
   layers:
   - Default
   - TransparentFX

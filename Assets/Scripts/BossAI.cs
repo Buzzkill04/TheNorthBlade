@@ -76,12 +76,14 @@ public class BossAI : MonoBehaviour
     {
         //Play the death animation
         bossAnimator.SetBool("Dead", true);
-        //Create the northblade png
-
         //Destroy the Rigidbody
         Destroy(GetComponent<Rigidbody2D>());
         //Destroy the collider
         Destroy(GetComponent<BoxCollider2D>());
+        //Get the northblade  prefab
+        GameObject NorthBladePrefab = (GameObject)Resources.Load("Prefabs/TheNorthBlade");
+        //Create a new north blade prefab at the boss' position when they died
+        Instantiate(NorthBladePrefab, transform.position, transform.rotation);
     }
 
     //Find all the enemies in range of the attack and kill them
