@@ -75,6 +75,7 @@ public class EnemyAI : MonoBehaviour
         if (playerGameObject != null)
         {
             playerGameObject.GetComponent<PlayerLife>().PlayerTakeDamage(attackDamage);
+           
         }
     }
 }

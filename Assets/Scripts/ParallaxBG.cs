@@ -24,7 +24,6 @@ public class ParallaxBG : MonoBehaviour
     {
         //Get a temporary scene camera position for repeating the backgrounds, we minus the parallaxEffect from 1 because its relative to the camera
         float sceneCamTempPos = sceneCam.transform.position.x * (1 - parallaxEffect);
-
         //Create distance to travel
         float dist = sceneCam.transform.position.x * parallaxEffect;
         //Change the position of the game object the script is applied to
@@ -35,7 +34,7 @@ public class ParallaxBG : MonoBehaviour
             //Add the length to the start pos
             startPos += length;
         }
-        else if (sceneCamTempPos < (startPos - length)) //If the temporary scene cam pos is less than the start pos + length            
+        else if (sceneCamTempPos < (startPos - length)) //If the temporary scene cam pos is less than the start pos - length            
         {
             //Minus the length from the start point
             startPos -= length;

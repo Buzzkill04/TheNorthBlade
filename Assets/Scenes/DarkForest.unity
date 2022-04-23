@@ -1309,6 +1309,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterToFollow: {fileID: 2087967616232337482}
   sceneCam: {fileID: 519420031}
+  sceneCamY: 0.408
+  XBounds1: 0
+  XBounds2: 100
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

@@ -79,7 +79,7 @@ public class PlayerLife : MonoBehaviour
             }
         }
         //If the player xp equals 10 level them up
-        if (playerXP == 10)
+        if (playerXP == 5)
         {
             playerLevel++;
             //Reset the player XP
