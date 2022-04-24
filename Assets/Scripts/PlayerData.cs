@@ -18,7 +18,9 @@ public class PlayerData
     //The current ability status
     public int characterAbilityStatus;
     //The amount of enemies the player has killed
-    public int enemyKillCount; 
+    public int enemyKillCount;
+    //The level the player was on
+    public int sceneBuildIndex;
     //The players position at the time of save
     public float[] playerPosition; 
     //The amount of food in the players inventory at a time, in order {pineapple, peach, strawberry}
@@ -36,6 +38,7 @@ public class PlayerData
         playerStrength = currentPlayer.playerStrength;
         characterAbilityStatus = currentPlayer.abilityStatus;
         enemyKillCount = currentPlayer.enemiesKilled;
+        sceneBuildIndex = currentPlayer.sceneBuildIndex;
         //Player position (x, y, z)
         playerPosition = new float[3];
         playerPosition[0] = currentPlayer.transform.position.x;

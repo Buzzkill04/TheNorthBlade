@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 //This script holds all the infomation about the players life
@@ -12,6 +14,8 @@ public class PlayerLife : MonoBehaviour
     private PlayerCombat playerCombatScript;
     //Reference to the inventory manager connected to the game object
     private InventoryManager inventoryManagerScript;
+    //The level loader game object
+    private GameObject levelLoader;
     //Animator component of the sprite
     private Animator animator;
     //Players XP
@@ -36,18 +40,31 @@ public class PlayerLife : MonoBehaviour
     public int numPeach = 0;
     //The amount of Strawberrys the player has 
     public int numStrawberry = 0;
+    //The scene the player is playing
+    public int sceneBuildIndex;
 
     // Start is called before the first frame update
     void Start()
     {
+        
         //Get the playerMovement script that is connected to the game object the script is attached to.
         playerMovementScript = GetComponent<PlayerMovement>();
         //Get the playerCombat script that is connected to the game object the script is attached to.
         playerCombatScript = GetComponent<PlayerCombat>();
         //Get the playerCombat script that is connected to the game object the script is attached to.
         inventoryManagerScript = GetComponent<InventoryManager>();
+        //Get the level loader game object
+        levelLoader = GameObject.Find("LevelLoader");
         //Set the animator variable to the playerMovement scripts animator.
         animator = playerMovementScript.animator;
+        try
+        {
+            LoadProgress();
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
+        }
         playerHealth *= playerLevel;
     }
 
@@ -76,6 +93,7 @@ public class PlayerLife : MonoBehaviour
             {
                 //Otherwise, kill them
                 PlayerDeath();
+                GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
             }
         }
         //If the player xp equals 10 level them up
@@ -118,6 +136,7 @@ public class PlayerLife : MonoBehaviour
         characterPrefab = savedPlayerData.characterPrefab;
         playerLevel = savedPlayerData.playerLevel;
         playerStrength = savedPlayerData.playerStrength;
+        sceneBuildIndex = savedPlayerData.sceneBuildIndex;
         //Make the ability status from the save the combat scripts ability status
         playerCombatScript.characterAbilityStatus = savedPlayerData.characterAbilityStatus;
         enemiesKilled = savedPlayerData.enemyKillCount;
@@ -129,4 +148,42 @@ public class PlayerLife : MonoBehaviour
         inventoryManagerScript.numStrawberry = savedPlayerData.inventoryItemAmounts[2];
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //If the collision has the tag End
+        if (collision.CompareTag("End"))
+        {
+            //Calculate the next scene's build index
+            Scene currentScene = SceneManager.GetActiveScene();
+            int nextSceneIndex = currentScene.buildIndex + 1;
+            //Start the coroutine to load the next level
+            StartCoroutine(LoadNextLevel(nextSceneIndex));
+        }
+    }
+    //This coroutine handles UI fading and level changing a coroutine is used so waitforseconds can be used
+    IEnumerator LoadNextLevel(int levelIndex)
+    {
+        //Get the animator of the level loader
+        Animator UIanimator = levelLoader.GetComponentInChildren<Animator>();
+        //Set the current scene build index into the variable that is saved in the save file
+        sceneBuildIndex = levelIndex;
+        //Start the fade to black animation
+        UIanimator.SetTrigger("Start");
+        //Wait for the time needed to complete the animation
+        yield return new WaitForSeconds(1);
+        //Load the new scene
+        SceneManager.LoadScene(levelIndex);
+        //find the player spawn game object
+        foreach (GameObject gO in SceneManager.GetActiveScene().GetRootGameObjects())
+        {
+            if (gO.name == "PlayerSpawn")
+            {
+                //Set the players position to the x and y position of the spawn point
+                transform.position = new Vector3(gO.transform.position.x, gO.transform.position.y, transform.position.z);
+            }
+        }
+        //Save the players progress
+        SaveProgress();
+        
+    }
 }

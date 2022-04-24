@@ -319,9 +319,14 @@ MonoBehaviour:
   playerLevel: 1
   playerHealth: 100
   playerStrength: 1
+  abilityStatus: 0
   enemiesKilled: 0
   characterType: wizard
   characterPrefab: 
+  numPinapple: 0
+  numPeach: 0
+  numStrawberry: 0
+  sceneBuildIndex: 0
 --- !u!114 &-5893185914816178094
 MonoBehaviour:
   m_ObjectHideFlags: 0

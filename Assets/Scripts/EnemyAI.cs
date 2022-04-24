@@ -74,8 +74,12 @@ public class EnemyAI : MonoBehaviour
         //take attackDamage from the players health
         if (playerGameObject != null)
         {
-            playerGameObject.GetComponent<PlayerLife>().PlayerTakeDamage(attackDamage);
-           
+            PlayerLife playerLifeScript;
+            playerLifeScript = playerGameObject.GetComponent<PlayerLife>();
+            if (playerLifeScript.playerHealth > 0)
+            {
+                playerLifeScript.PlayerTakeDamage(attackDamage);
+            }
         }
     }
 }

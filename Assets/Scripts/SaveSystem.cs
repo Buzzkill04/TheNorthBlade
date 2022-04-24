@@ -12,13 +12,14 @@ public static class SaveSystem
     {
         //Create a new instance of the binary formatter
         BinaryFormatter bFormatter = new BinaryFormatter();
-        //The file name, as it is a binary file the file extension does not matter
-        string path = Application.persistentDataPath + "playerSave.zzTop";
+        //create the file name, as it is a binary file the file extension does not matter
+        string path = Application.persistentDataPath + "/playerSave.zzTop";
         //The player data to save
         PlayerData playerData = new PlayerData(currentPlayer);
         //This using statement will open the the filestream then run the code block and finally close the stream
         using (FileStream stream = new FileStream(path, FileMode.Create))
         {
+            //Serialize the player data
             bFormatter.Serialize(stream, playerData);
         }
 
@@ -26,7 +27,8 @@ public static class SaveSystem
 
     public static PlayerData LoadPlayer()
     {
-        string path = Application.persistentDataPath + "playerSave.zzTop";
+        //Create the path
+        string path = Application.persistentDataPath + "/playerSave.zzTop";
         if (File.Exists(path))
         {
             //Create a new instance of the binary formatter
@@ -40,8 +42,8 @@ public static class SaveSystem
         }
         else
         {
-            Debug.Log("No Save File Found");
-            return null;
+            //If there is no file, throw a file not found exception
+            throw new FileNotFoundException();
         }
     }
 
