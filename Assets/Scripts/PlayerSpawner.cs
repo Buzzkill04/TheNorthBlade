@@ -12,7 +12,7 @@ public class PlayerSpawner : MonoBehaviour
         //If the character creator was used (The player made a new game at the start of the play session)
         if (CharacterCreator.characterPrefabName != null)
         {
-            //Get the 
+            //Get the prefab name from the character creator
             characterPrefabName = CharacterCreator.characterPrefabName;
 
         }
