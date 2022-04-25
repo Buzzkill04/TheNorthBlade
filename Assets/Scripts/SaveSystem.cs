@@ -47,4 +47,11 @@ public static class SaveSystem
         }
     }
 
+    public static void DeleteSaveFile()
+    {
+        //Create the path
+        string path = Application.persistentDataPath + "/playerSave.zzTop";
+        File.Delete(path);
+    }
+
 }

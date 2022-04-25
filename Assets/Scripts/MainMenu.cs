@@ -8,18 +8,19 @@ public class MainMenu : MonoBehaviour
     //The animator for the screen fading
     public Animator animator;
 
-    public void PlayGame()
+    public void NewGame()
     {
+        SaveSystem.DeleteSaveFile();
         //Start the coroutine to start a new game
-        StartCoroutine(LoadStart());
+        StartCoroutine(LoadCharacterCreator());
     }
-    IEnumerator LoadStart()
+    IEnumerator LoadCharacterCreator()
     {
         //Fade the screen to black,
         animator.SetTrigger("Start");
         //Wait for 1 second
         yield return new WaitForSeconds(1);
-        //Load the starting screen, will be replaced with the character creator when ready
-        SceneManager.LoadScene("DarkForest");
+        //Load the character creator
+        SceneManager.LoadScene("CharacterCreator");
     }
 }

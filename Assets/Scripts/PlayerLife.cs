@@ -33,7 +33,7 @@ public class PlayerLife : MonoBehaviour
     //The character type, will be chosen in the character creator
     public string characterType;
     //The prefab of the player will also be chosen in the character creator
-    public string characterPrefab;
+    public string characterPrefabName;
     //The amount of pinapples the player has 
     public int numPinapple = 0;
     //The amount of peaches the player has
@@ -46,7 +46,11 @@ public class PlayerLife : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Get the scene build index
+        sceneBuildIndex = SceneManager.GetActiveScene().buildIndex;
+        //Set the character type and the prefab name
+        characterType = CharacterCreator.characterType;
+        characterPrefabName = CharacterCreator.characterPrefabName;
         //Get the playerMovement script that is connected to the game object the script is attached to.
         playerMovementScript = GetComponent<PlayerMovement>();
         //Get the playerCombat script that is connected to the game object the script is attached to.
@@ -133,16 +137,14 @@ public class PlayerLife : MonoBehaviour
         //Call the load player method and store the return value
         PlayerData savedPlayerData = SaveSystem.LoadPlayer();
         characterType = savedPlayerData.characterType;
-        characterPrefab = savedPlayerData.characterPrefab;
+        characterPrefabName = savedPlayerData.characterPrefabName;
         playerLevel = savedPlayerData.playerLevel;
         playerStrength = savedPlayerData.playerStrength;
         sceneBuildIndex = savedPlayerData.sceneBuildIndex;
         //Make the ability status from the save the combat scripts ability status
         playerCombatScript.characterAbilityStatus = savedPlayerData.characterAbilityStatus;
         enemiesKilled = savedPlayerData.enemyKillCount;
-        //Make the player position the stored position
-        transform.position = new Vector3(savedPlayerData.playerPosition[0], savedPlayerData.playerPosition[1], savedPlayerData.playerPosition[2]);
-        //Store the amount of collected items in the inventory manager script.
+        //Get the amount of collected items and set the values in the inventory manager script.
         inventoryManagerScript.numPinapple = savedPlayerData.inventoryItemAmounts[0];
         inventoryManagerScript.numPeach = savedPlayerData.inventoryItemAmounts[1];
         inventoryManagerScript.numStrawberry = savedPlayerData.inventoryItemAmounts[2];
@@ -173,15 +175,6 @@ public class PlayerLife : MonoBehaviour
         yield return new WaitForSeconds(1);
         //Load the new scene
         SceneManager.LoadScene(levelIndex);
-        //find the player spawn game object
-        foreach (GameObject gO in SceneManager.GetActiveScene().GetRootGameObjects())
-        {
-            if (gO.name == "PlayerSpawn")
-            {
-                //Set the players position to the x and y position of the spawn point
-                transform.position = new Vector3(gO.transform.position.x, gO.transform.position.y, transform.position.z);
-            }
-        }
         //Save the players progress
         SaveProgress();
         

@@ -21,16 +21,12 @@ public class EnemyAI : MonoBehaviour
     //facing left
     public bool facingLeft = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //Get the target transform
-        target = GameObject.FindWithTag("Player").transform;
-    }
 
     //Called every frame
     private void Update()
     {
+        //Get the target transform
+        target = GameObject.FindWithTag("Player").transform;
         //If the distance between the play and the boss is less than 5 
         if (Mathf.Abs(Vector2.Distance(transform.position, target.position)) <= 3)
         {

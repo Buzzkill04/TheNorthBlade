@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     //Game object the camera will follow
-    public GameObject characterToFollow;
+    private GameObject characterToFollow;
     //The camera that will move with the camera
     public Camera sceneCam;
     //The Y and Z position the camera needs to be locked on
@@ -17,6 +17,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        characterToFollow = GameObject.FindGameObjectWithTag("Player");
         //Change the position of the camera to the characterToFollow's X position once per frame, with the Y and Z locked
         //Clamp the x position between the bounds so that the camera doesnt go beyond the worlds bounds
         sceneCam.transform.position = new Vector3(Mathf.Clamp(characterToFollow.transform.position.x, XBounds1, XBounds2), sceneCamY, sceneCamZ);
