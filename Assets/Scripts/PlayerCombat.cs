@@ -45,8 +45,8 @@ public class PlayerCombat : MonoBehaviour
             Attack();
         }
         //Ability's
-        //the players level is taken away from 11 so that the more they level up they can use the ability more often
-        if (Input.GetButtonDown("Ability") && characterAbilityStatus == (11 - playerLifeScript.playerLevel))
+        //the players level is taken away from 7 so that the more they level up they can use the ability more often
+        if (Input.GetButtonDown("Ability") && characterAbilityStatus == (7 - playerLifeScript.playerLevel))
         {
             if (characterType == "sScout")
             {

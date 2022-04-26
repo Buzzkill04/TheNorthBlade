@@ -58,7 +58,7 @@ public class PlayerLife : MonoBehaviour
         //Get the playerCombat script that is connected to the game object the script is attached to.
         inventoryManagerScript = GetComponent<InventoryManager>();
         //Get the level loader game object
-        levelLoader = GameObject.Find("LevelLoader");
+        levelLoader = GameObject.Find("LevelUI");
         //Set the animator variable to the playerMovement scripts animator.
         animator = playerMovementScript.animator;
         try
