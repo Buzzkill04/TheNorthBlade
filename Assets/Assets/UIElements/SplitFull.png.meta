@@ -11,6 +11,30 @@ TextureImporter:
   - first:
       213: -6162735171022929257
     second: border_05_nobackground_2
+  - first:
+      213: 3293393084712044976
+    second: SplitFull_0
+  - first:
+      213: -1741321857241452098
+    second: SplitFull_1
+  - first:
+      213: -2824340054135558303
+    second: SplitFull_2
+  - first:
+      213: 5437922037150280962
+    second: SplitFull_3
+  - first:
+      213: -8629012876591987778
+    second: SplitFull_4
+  - first:
+      213: -9144670993417680501
+    second: SplitFull_5
+  - first:
+      213: 3582244109694857257
+    second: SplitFull_6
+  - first:
+      213: -8986751913061329856
+    second: SplitFull_7
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -100,13 +124,34 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: border_05_nobackground_0
+      name: SplitFull_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 36
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b94df7bf8b74bd20800000000000000
+      internalID: 3293393084712044976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SplitFull_1
       rect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 7
-        height: 44
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,20 +159,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3ec6cad15ba7ca30800000000000000
-      internalID: 4235542342616403519
+      spriteID: eb1ff7b2ff495d7e0800000000000000
+      internalID: -1741321857241452098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: border_05_nobackground_1
+      name: SplitFull_2
       rect:
         serializedVersion: 2
-        x: 7
-        y: 0
-        width: 30
-        height: 44
+        x: 37
+        y: 36
+        width: 7
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -135,20 +180,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4abb08d1907115e70800000000000000
-      internalID: 9102081649809603492
+      spriteID: 16fa75c4fadedc8d0800000000000000
+      internalID: -2824340054135558303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: border_05_nobackground_2
+      name: SplitFull_3
       rect:
         serializedVersion: 2
         x: 37
         y: 0
         width: 7
-        height: 44
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,8 +201,92 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7924f567301997aa0800000000000000
-      internalID: -6162735171022929257
+      spriteID: 20d6c9c0841677b40800000000000000
+      internalID: 5437922037150280962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SplitFull_4
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 0
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb38678d1869f3880800000000000000
+      internalID: -8629012876591987778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SplitFull_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 8
+        width: 7
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8945899e2a971180800000000000000
+      internalID: -9144670993417680501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SplitFull_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 36
+        width: 30
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 920f819c900b6b130800000000000000
+      internalID: 3582244109694857257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SplitFull_7
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 8
+        width: 7
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 044da69bfb4a84380800000000000000
+      internalID: -8986751913061329856
       vertices: []
       indices: 
       edges: []
