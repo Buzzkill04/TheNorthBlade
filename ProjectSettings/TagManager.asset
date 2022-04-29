@@ -12,6 +12,7 @@ TagManager:
   - Pineapple
   - Start
   - End
+  - WaterDeath
   layers:
   - Default
   - TransparentFX

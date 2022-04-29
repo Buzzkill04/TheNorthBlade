@@ -161,6 +161,12 @@ public class PlayerLife : MonoBehaviour
             //Start the coroutine to load the next level
             StartCoroutine(LoadNextLevel(nextSceneIndex));
         }
+        //If the collision has the tag spikes 
+        if (collision.CompareTag("WaterDeath"))
+        {
+            //Kill the player by taking the rest of the players health away
+            PlayerTakeDamage(playerHealth);
+        }
     }
     //This coroutine handles UI fading and level changing a coroutine is used so waitforseconds can be used
     IEnumerator LoadNextLevel(int levelIndex)
@@ -168,7 +174,7 @@ public class PlayerLife : MonoBehaviour
         //Get the animator of the level loader
         Animator UIanimator = levelLoader.GetComponentInChildren<Animator>();
         //Set the current scene build index into the variable that is saved in the save file
-        sceneBuildIndex = levelIndex;
+        sceneBuildIndex = levelIndex;   
         //Start the fade to black animation
         UIanimator.SetTrigger("Start");
         //Wait for the time needed to complete the animation
