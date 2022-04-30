@@ -23,7 +23,9 @@ public class PlayerLife : MonoBehaviour
     //Players level
     public int playerLevel = 1;
     //Players health
-    public float playerHealth = 100f;
+    public float playerHealth;
+    //The max a players health can be
+    public float maxPlayerHealth;
     //Players Strength
     public float playerStrength = 1f;
     //Player ability status
@@ -69,7 +71,9 @@ public class PlayerLife : MonoBehaviour
         {
             Debug.Log(e);
         }
-        playerHealth *= playerLevel;
+        maxPlayerHealth = 100 * playerLevel;
+        playerHealth = maxPlayerHealth;
+        abilityStatus = playerCombatScript.characterAbilityStatus;
     }
 
     // Update is called with the physics system 50 times per second
@@ -79,6 +83,8 @@ public class PlayerLife : MonoBehaviour
         numPinapple = inventoryManagerScript.numPinapple;
         numPeach = inventoryManagerScript.numPeach;
         numStrawberry = inventoryManagerScript.numStrawberry;
+        //Get the character ability status
+        abilityStatus = playerCombatScript.characterAbilityStatus;
         //Set the animator Health parameter to the players current health every fram
         animator.SetFloat("Health", playerHealth);
         //Check if the player health drops below 0
@@ -86,9 +92,9 @@ public class PlayerLife : MonoBehaviour
         {
             //Start the death animation
             animator.SetTrigger("Death");
-            //If the players chosen type is swordsman and their ability is at 11- playerlevel, so as the player
+            //If the players chosen type is swordsman and their ability is at 7 - playerlevel, so as the player
             //levels up, the can use their ability more often
-            if (characterType == "swordsman" && playerCombatScript.characterAbilityStatus == (11 - playerLevel))
+            if (characterType == "swordsman" && playerCombatScript.characterAbilityStatus == (7 - playerLevel))
             {
                 //revive them
                 playerCombatScript.SMAbility();
@@ -103,7 +109,10 @@ public class PlayerLife : MonoBehaviour
         //If the player xp equals 10 level them up
         if (playerXP == 5)
         {
+            //level the player   
             playerLevel++;
+            //update the max health
+            maxPlayerHealth = 100 * playerLevel;
             //Reset the player XP
             playerXP = 0;
         }
@@ -117,6 +126,16 @@ public class PlayerLife : MonoBehaviour
         playerHealth -= damage;
     }
 
+    //Called when player heals
+    public void PlayerHeal(float healAmount)
+    {
+        playerHealth += healAmount;
+        if (playerHealth > maxPlayerHealth)
+        {
+            playerHealth = maxPlayerHealth;
+        }
+    }
+
     //Called when a player dies
     public void PlayerDeath()
     {
@@ -126,8 +145,6 @@ public class PlayerLife : MonoBehaviour
     //Save the progress of the player
     public void SaveProgress()
     {
-        //Get the ability status
-        abilityStatus = playerCombatScript.characterAbilityStatus;
         //Call the save player data method, 'this' refers to this script
         SaveSystem.SavePlayerData(this);
     }
@@ -174,7 +191,7 @@ public class PlayerLife : MonoBehaviour
         //Get the animator of the level loader
         Animator UIanimator = levelLoader.GetComponentInChildren<Animator>();
         //Set the current scene build index into the variable that is saved in the save file
-        sceneBuildIndex = levelIndex;   
+        sceneBuildIndex = levelIndex;
         //Start the fade to black animation
         UIanimator.SetTrigger("Start");
         //Wait for the time needed to complete the animation

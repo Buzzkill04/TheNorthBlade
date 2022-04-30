@@ -17,7 +17,7 @@ public class PlayerCombat : MonoBehaviour
     //The range of the attack
     public float attackRange = 0.5f;
     //Character damage amount
-    public float playerAttackDamage = 30f;
+    public float playerAttackDamage;
     //Characters ability process
     public int characterAbilityStatus = 0;
     //Character type
@@ -34,6 +34,7 @@ public class PlayerCombat : MonoBehaviour
         animator = playerMovementScript.animator;
         //Get the chosen characterType
         characterType = playerLifeScript.characterType;
+        playerAttackDamage = 30 * playerLifeScript.playerStrength; 
     }
 
     // Update is called once per frame
@@ -131,7 +132,7 @@ public class PlayerCombat : MonoBehaviour
                 playerLifeScript.enemiesKilled++;
                 playerLifeScript.playerStrength += 0.2f;
                 //Multiply the attack damage by the players strength
-                playerAttackDamage *= playerLifeScript.playerStrength;
+                playerAttackDamage = 30 * playerLifeScript.playerStrength;
             }
 
         }

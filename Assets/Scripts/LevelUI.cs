@@ -25,8 +25,8 @@ public class LevelUI : MonoBehaviour
                 inventoryUI.SetActive(true);
             }
         }
-        //If any key is pressed and the menu is active
-        else if (Input.anyKeyDown && inventoryUI.activeSelf)
+        //If any key is pressed, the left mouse button is not pressed down and the menu is active
+        else if ((Input.anyKeyDown && !Input.GetMouseButtonDown(0)) && inventoryUI.activeSelf)
         {
             //Deactivate the game object (close the menu)
             inventoryUI.SetActive(false);

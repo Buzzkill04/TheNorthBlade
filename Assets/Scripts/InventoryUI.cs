@@ -39,10 +39,39 @@ public class InventoryUI : MonoBehaviour
         //Set the value current weight to the sum of all the inventory items
         currWeightText.text = (playerInventoryManager.numPinapple + playerInventoryManager.numPeach + playerInventoryManager.numStrawberry).ToString();
         //Set the stats text to the current player stats
-        maxHealthText.text = playerLifeScript.playerHealth.ToString();
+        maxHealthText.text = playerLifeScript.maxPlayerHealth.ToString();
         strengthText.text = playerLifeScript.playerStrength.ToString();
         levelText.text = playerLifeScript.playerLevel.ToString();
         enemiesKilledText.text = playerLifeScript.enemiesKilled.ToString();
     }
-
+    //Called when the player uses a pineapple from the menu
+    public void UsePineapple()
+    {
+        if (playerInventoryManager.numPinapple >= 1)
+        {
+            //Heal the player by the correct amount
+            playerLifeScript.PlayerHeal(playerInventoryManager.pineHeal);
+            playerInventoryManager.numPinapple--;
+        }
+    }
+    //Called when the player uses a peach from the menu
+    public void UsePeach()
+    {
+        if (playerInventoryManager.numPeach >= 1)
+        {
+            //Heal the player by the correct amount
+            playerLifeScript.PlayerHeal(playerInventoryManager.peachHeal);
+            playerInventoryManager.numPeach--;
+        }
+    }
+    //Called when the player uses a strawberry from the menu
+    public void UseStrawberry()
+    {
+        if (playerInventoryManager.numStrawberry >= 1)
+        {
+            //Heal the player by the correct amount
+            playerLifeScript.PlayerHeal(playerInventoryManager.strawHeal);
+            playerInventoryManager.numStrawberry--;
+        }
+    }
 }
