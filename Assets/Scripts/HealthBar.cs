@@ -24,10 +24,19 @@ public class HealthBar : MonoBehaviour
     {
         //The max value should be the amount needed to use the ability which is 7 - the player level
         healthFillSlider.maxValue = 100*playerLevel;
-        //Set the health slider value to the health
-        healthFillSlider.value = health;
+        if (health <= 0)
+        {
+            healthFillSlider.value = 0;
+            currHealthText.text = 0.ToString();
+        }
+        else
+        {
+            //Set the health slider value to the health
+            healthFillSlider.value = health;
+            currHealthText.text = health.ToString();
+        }
         //Set the text of the health, so the player has a better idea as to their health
         maxHealthText.text = (100 * playerLevel).ToString();
-        currHealthText.text = health.ToString();
+        
     }
 }

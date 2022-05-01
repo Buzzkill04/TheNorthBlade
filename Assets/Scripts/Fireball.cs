@@ -13,7 +13,7 @@ public class Fireball : MonoBehaviour
     //The amount of things the fireball has hit
     private int hitCount = 0;
     //Fireball damage
-    private int fireballDamage = 60;
+    private int fireballDamage = 100;
 
     // Start is called before the first frame update
     void Start()

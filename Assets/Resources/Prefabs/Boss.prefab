@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b58ef076ba7753440a154eb7bb65053c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossHealth: 500
+  bossHealth: 200
   bossAnimator: {fileID: 5969531907950355908}
   playerLayer:
     serializedVersion: 2

@@ -3,11 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     //The animator for the screen fading
     public Animator animator;
+    //The error screen game object and the text on it
+    public GameObject errorScreen;
+    public Text errorScreenText;
+
     //Called when continue game is called
     public void ContinueGame()
     {
@@ -18,7 +23,8 @@ public class MainMenu : MonoBehaviour
         }
         catch (Exception)
         {
-            Debug.Log("No save file found!");
+            errorScreen.SetActive(true);
+            errorScreenText.text = "No Save File Found!";
         }
         
 
@@ -41,7 +47,7 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-    
+    //This coroutine handles UI fading and level changing a coroutine is used so waitforseconds can be used
     IEnumerator LoadNextScene(int sceneIndex)
     {
         //Fade the screen to black,

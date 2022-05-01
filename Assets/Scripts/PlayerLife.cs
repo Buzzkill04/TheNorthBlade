@@ -15,7 +15,7 @@ public class PlayerLife : MonoBehaviour
     //Reference to the inventory manager connected to the game object
     private InventoryManager inventoryManagerScript;
     //The level loader game object
-    private GameObject levelLoader;
+    private GameObject levelUI;
     //Animator component of the sprite
     private Animator animator;
     //The animator of the effects game object
@@ -31,7 +31,7 @@ public class PlayerLife : MonoBehaviour
     //Players Strength
     public float playerStrength = 1f;
     //Player ability status
-    public int abilityStatus;
+    public int abilityStatus = 0;
     //Amount of enemies the player has killed
     public int enemiesKilled = 0;
     //The character type, will be chosen in the character creator
@@ -62,7 +62,7 @@ public class PlayerLife : MonoBehaviour
         //Get the playerCombat script that is connected to the game object the script is attached to.
         inventoryManagerScript = GetComponent<InventoryManager>();
         //Get the level loader game object
-        levelLoader = GameObject.Find("LevelUI");
+        levelUI = GameObject.Find("LevelUI");
         //Set the animator variable to the playerMovement scripts animator.
         animator = playerMovementScript.animator;
         try
@@ -75,7 +75,8 @@ public class PlayerLife : MonoBehaviour
         }
         maxPlayerHealth = 100 * playerLevel;
         playerHealth = maxPlayerHealth;
-        abilityStatus = playerCombatScript.characterAbilityStatus;
+        playerCombatScript.playerAttackDamage = 30 * playerStrength;
+        playerCombatScript.characterAbilityStatus = abilityStatus;
     }
 
     // Update is called with the physics system 50 times per second
@@ -143,6 +144,9 @@ public class PlayerLife : MonoBehaviour
     //Called when a player dies
     public void PlayerDeath()
     {
+        //Get the levelUI game object, then get the deathUI (index 3), this will get the transform
+        //So we need to get the original game object and set it to being active
+        levelUI.transform.GetChild(3).gameObject.SetActive(true);
         //Destroy the playerMovementScript so that the player is unable to move.
         Destroy(playerMovementScript);
     }
@@ -163,7 +167,7 @@ public class PlayerLife : MonoBehaviour
         playerStrength = savedPlayerData.playerStrength;
         sceneBuildIndex = savedPlayerData.sceneBuildIndex;
         //Make the ability status from the save the combat scripts ability status
-        playerCombatScript.characterAbilityStatus = savedPlayerData.characterAbilityStatus;
+        abilityStatus = savedPlayerData.characterAbilityStatus;
         enemiesKilled = savedPlayerData.enemyKillCount;
         //Get the amount of collected items and set the values in the inventory manager script.
         inventoryManagerScript.numPinapple = savedPlayerData.inventoryItemAmounts[0];
@@ -188,22 +192,39 @@ public class PlayerLife : MonoBehaviour
             //Kill the player by taking the rest of the players health away
             PlayerTakeDamage(playerHealth);
         }
+        if (collision.CompareTag("StoryItem"))
+        {
+            //Load the final menu, passing in the game object of the collision
+            StartCoroutine(LoadFinalMenu(collision.gameObject));
+        }
     }
     //This coroutine handles UI fading and level changing a coroutine is used so waitforseconds can be used
     IEnumerator LoadNextLevel(int levelIndex)
     {
         //Get the animator of the level loader
-        Animator UIanimator = levelLoader.GetComponentInChildren<Animator>();
+        Animator UIanimator = levelUI.GetComponentInChildren<Animator>();
         //Set the current scene build index into the variable that is saved in the save file
         sceneBuildIndex = levelIndex;
+        //Save the players progress
+        SaveProgress();
         //Start the fade to black animation
         UIanimator.SetTrigger("Start");
         //Wait for the time needed to complete the animation
         yield return new WaitForSeconds(1);
         //Load the new scene
         SceneManager.LoadScene(levelIndex);
-        //Save the players progress
-        SaveProgress();
-        
     }
+    IEnumerator LoadFinalMenu(GameObject TheNorthBlade)
+    {
+        //Get the animator of the level loader
+        Animator UIanimator = levelUI.GetComponentInChildren<Animator>();
+        //Start the fade to white animation
+        UIanimator.SetTrigger("EndGame");
+        //Wait for the time needed to complete the animation
+        yield return new WaitForSeconds(4);
+        //Load the end menu
+        SceneManager.LoadScene("EndMenu");
+    }
+
+
 }

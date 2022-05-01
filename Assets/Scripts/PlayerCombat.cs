@@ -34,7 +34,6 @@ public class PlayerCombat : MonoBehaviour
         animator = playerMovementScript.animator;
         //Get the chosen characterType
         characterType = playerLifeScript.characterType;
-        playerAttackDamage = 30 * playerLifeScript.playerStrength; 
     }
 
     // Update is called once per frame
@@ -118,6 +117,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 //Take health from the boss
                 enemy.GetComponent<BossAI>().BossTakeDamage(playerAttackDamage);
+                characterAbilityStatus++;
             }
             else
             {
