@@ -18,6 +18,8 @@ public class PlayerLife : MonoBehaviour
     private GameObject levelLoader;
     //Animator component of the sprite
     private Animator animator;
+    //The animator of the effects game object
+    public Animator effectsAnimator;
     //Players XP
     public float playerXP = 0f;
     //Players level
@@ -115,6 +117,8 @@ public class PlayerLife : MonoBehaviour
             maxPlayerHealth = 100 * playerLevel;
             //Reset the player XP
             playerXP = 0;
+            //Play the level up animation
+            effectsAnimator.SetTrigger("LevelUp");
         }
     }
 

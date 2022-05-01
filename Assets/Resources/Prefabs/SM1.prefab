@@ -130,6 +130,7 @@ Transform:
   - {fileID: 4370459689967487369}
   - {fileID: 2087967616775699136}
   - {fileID: 2087967617248688921}
+  - {fileID: 5359475785735876599}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -346,14 +347,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e52c127163e894187b964d3d39aeec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectsAnimator: {fileID: 6413134771862691200}
   playerXP: 0
   playerLevel: 1
   playerHealth: 100
+  maxPlayerHealth: 0
   playerStrength: 1
   abilityStatus: 0
   enemiesKilled: 0
   characterType: swordsman
-  characterPrefab: 
+  characterPrefabName: 
   numPinapple: 0
   numPeach: 0
   numStrawberry: 0
@@ -373,3 +376,73 @@ MonoBehaviour:
   numPinapple: 0
   numPeach: 0
   numStrawberry: 0
+  pineHeal: 35
+  peachHeal: 20
+  strawHeal: 10
+--- !u!1001 &2755117747550746655
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2087967617275617206}
+    m_Modifications:
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.73
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546678257776127929, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+      propertyPath: m_Name
+      value: EffectsAnim
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+--- !u!4 &5359475785735876599 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7808267768393553896, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+  m_PrefabInstance: {fileID: 2755117747550746655}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6413134771862691200 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9168252308926375327, guid: d5a86ad89bb69df44a14df8f62a043bf, type: 3}
+  m_PrefabInstance: {fileID: 2755117747550746655}
+  m_PrefabAsset: {fileID: 0}
