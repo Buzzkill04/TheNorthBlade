@@ -8,11 +8,16 @@ public class CameraFollow : MonoBehaviour
     private GameObject characterToFollow;
     //The camera that will move with the camera
     public Camera sceneCam;
-    //The Y and Z position the camera needs to be locked on
-    public float sceneCamY;
+    //The Z position the camera needs to be locked on
+    const float sceneCamZ = -10f;
+    //The x and y positions the camera can travel between
     public float XBounds1;
     public float XBounds2;
-    const float sceneCamZ = -10f;
+    public float YBounds1;
+    public float YBounds2;
+    //The offset for the Y camera to keep the camera in the correct area
+    public float offsetY;
+    
 
     // Update is called once per frame
     void Update()
@@ -20,7 +25,10 @@ public class CameraFollow : MonoBehaviour
         characterToFollow = GameObject.FindGameObjectWithTag("Player");
         //Change the position of the camera to the characterToFollow's X position once per frame, with the Y and Z locked
         //Clamp the x position between the bounds so that the camera doesnt go beyond the worlds bounds
-        sceneCam.transform.position = new Vector3(Mathf.Clamp(characterToFollow.transform.position.x, XBounds1, XBounds2), sceneCamY, sceneCamZ);
+        //We also need to clamp on the y axis for levels that have more verticality 
+        sceneCam.transform.position = new Vector3(Mathf.Clamp(characterToFollow.transform.position.x, XBounds1, XBounds2), 
+                                                    Mathf.Clamp(characterToFollow.transform.position.y + offsetY, YBounds1, YBounds2),  
+                                                        sceneCamZ);
     }
 }
 

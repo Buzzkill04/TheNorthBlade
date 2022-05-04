@@ -81,7 +81,11 @@ public class CharacterCreator : MonoBehaviour
     //Called when continue is pressed
     public void Continue()
     {
-        StartCoroutine(LoadStart());
+        if (characterType != null)
+        {
+            StartCoroutine(LoadStart());
+        }
+        
     }
     IEnumerator LoadStart()
     {
