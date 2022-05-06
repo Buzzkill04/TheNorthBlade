@@ -72,9 +72,9 @@ public class PlayerLife : MonoBehaviour
         catch (Exception e)
         {
             Debug.Log(e);
+            playerHealth = 100f;
         }
         maxPlayerHealth = 100 * playerLevel;
-        playerHealth = maxPlayerHealth;
         playerCombatScript.playerAttackDamage = 30 * playerStrength;
         playerCombatScript.characterAbilityStatus = abilityStatus;
     }
@@ -164,6 +164,8 @@ public class PlayerLife : MonoBehaviour
         characterType = savedPlayerData.characterType;
         characterPrefabName = savedPlayerData.characterPrefabName;
         playerLevel = savedPlayerData.playerLevel;
+        playerXP = savedPlayerData.playerXP;
+        playerHealth = savedPlayerData.playerHealth;
         playerStrength = savedPlayerData.playerStrength;
         sceneBuildIndex = savedPlayerData.sceneBuildIndex;
         //Make the ability status from the save the combat scripts ability status
@@ -216,6 +218,8 @@ public class PlayerLife : MonoBehaviour
     }
     IEnumerator LoadFinalMenu(GameObject TheNorthBlade)
     {
+        TheNorthBlade northBladeScript = TheNorthBlade.GetComponent<TheNorthBlade>();
+        northBladeScript.collected = true;
         //Get the animator of the level loader
         Animator UIanimator = levelUI.GetComponentInChildren<Animator>();
         //Start the fade to white animation

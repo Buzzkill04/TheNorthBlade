@@ -12,7 +12,11 @@ public class PlayerData
     //The characters prefab
     public string characterPrefabName; 
     //The players level
-    public int playerLevel; 
+    public int playerLevel;
+    //The amount of XP the player has 
+    public float playerXP;
+    //The players health at the end of a level
+    public float playerHealth;
     //The players strength
     public float playerStrength;
     //The current ability status
@@ -32,6 +36,8 @@ public class PlayerData
         characterType = currentPlayer.characterType;
         characterPrefabName = currentPlayer.characterPrefabName;
         playerLevel = currentPlayer.playerLevel;
+        playerXP = currentPlayer.playerXP;
+        playerHealth = currentPlayer.playerHealth;
         playerStrength = currentPlayer.playerStrength;
         characterAbilityStatus = currentPlayer.abilityStatus;
         enemyKillCount = currentPlayer.enemiesKilled;

@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/MushroomForestLevel3/MushroomForestLevel3.unity
     guid: 7fff75877c9a1c64d8ec71c7b320d93d
   - enabled: 1
+    path: Assets/Scenes/MushroomForestLevel4/MushroomForestLevel4.unity
+    guid: 5f6795806ce9350418219a68f31b4276
+  - enabled: 1
     path: Assets/Scenes/Hills/Hills.unity
     guid: 299f79b8949bd044494f2a2fe0fa5cd2
   - enabled: 1
