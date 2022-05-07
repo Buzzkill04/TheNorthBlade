@@ -391,8 +391,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 66.9, y: 1.2226}
-  m_SizeDelta: {x: 30.9828, y: 88.5608}
+  m_AnchoredPosition: {x: 163.26, y: 1.2226}
+  m_SizeDelta: {x: 223.7, y: 88.5608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &168005993
 MonoBehaviour:
@@ -495,6 +495,8 @@ MonoBehaviour:
     characterType: 
     characterPrefabName: 
     playerLevel: 0
+    playerXP: 0
+    playerHealth: 0
     playerStrength: 0
     characterAbilityStatus: 0
     enemyKillCount: 0
@@ -1143,8 +1145,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -24.5, y: 1.2226}
-  m_SizeDelta: {x: 30.9828, y: 88.5608}
+  m_AnchoredPosition: {x: 51.92214, y: 1.2226}
+  m_SizeDelta: {x: 183.827, y: 88.5608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &659880276
 MonoBehaviour:
@@ -1650,8 +1652,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 201.6, y: 1.2226}
-  m_SizeDelta: {x: 30.9828, y: 88.5608}
+  m_AnchoredPosition: {x: 230.61, y: 1.2226}
+  m_SizeDelta: {x: 88.993, y: 88.5608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &981908594
 MonoBehaviour:
@@ -1686,7 +1688,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: X
+  m_Text: x
 --- !u!222 &981908595
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2237,8 +2239,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 175.29675, y: 1.2226}
-  m_SizeDelta: {x: 139.5759, y: 88.5608}
+  m_AnchoredPosition: {x: 190.31, y: 1.2226}
+  m_SizeDelta: {x: 169.6, y: 88.5608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1364468302
 MonoBehaviour:

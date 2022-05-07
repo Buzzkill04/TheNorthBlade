@@ -13,14 +13,6 @@ public class DeathUI : MonoBehaviour
         Application.Quit();
     }
 
-    //Called when main menu is pressed
-    public void MainMenu()
-    {
-        //Load the next scene, on a new game the scene should be the character creator,
-        //The main menu has a build index of 0
-        StartCoroutine(LoadNextScene(0));
-    }
-
     //Called when load last save is pressed
     public void LoadLastSave()
     {
@@ -28,6 +20,14 @@ public class DeathUI : MonoBehaviour
         PlayerData savedPlayerData = SaveSystem.LoadPlayer();
         //Travel to the level they were on when they last saved
         StartCoroutine(LoadNextScene(savedPlayerData.sceneBuildIndex));
+    }
+
+    //Called when main menu is pressed
+    public void MainMenu()
+    {
+        //Load the next scene, on a new game the scene should be the character creator,
+        //The main menu has a build index of 0
+        StartCoroutine(LoadNextScene(0));
     }
 
     //This coroutine handles UI fading and level changing a coroutine is used so waitforseconds can be used

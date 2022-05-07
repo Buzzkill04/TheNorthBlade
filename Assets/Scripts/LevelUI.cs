@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LevelUI : MonoBehaviour
 {
-    //The Ui for the inventory
+    //The UI for the inventory
     public GameObject inventoryUI;
+    //The UI for the pause menu
+    public GameObject pauseUI;
 
     // Update is called once per frame
     void Update()
@@ -23,6 +25,18 @@ public class LevelUI : MonoBehaviour
             {
                 //Activate the game object (open the menu)
                 inventoryUI.SetActive(true);
+            }
+        }
+        //If escape is pressed
+        else if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            //If the inventory is currently active
+            if (!pauseUI.activeSelf)
+            {
+                //Activate the game object (open the menu)
+                pauseUI.SetActive(true);
+                //pause the game
+                PauseMenu.paused = true;
             }
         }
         //If any key is pressed, the left mouse button is not pressed down and the menu is active
