@@ -210,7 +210,7 @@ GameObject:
   - component: {fileID: 95345386}
   - component: {fileID: 95345385}
   m_Layer: 5
-  m_Name: Stats
+  m_Name: ObtainedBlade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -268,7 +268,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Your Stats
+  m_Text: You Obtained The North Blade
 --- !u!222 &95345386
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2691,7 +2691,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1295247195106098273
 RectTransform:
   m_ObjectHideFlags: 0

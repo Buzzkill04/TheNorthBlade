@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -10,6 +10,7 @@ public class OptionsMenu : MonoBehaviour
     public Slider sfxSlider;
     public Slider musicSlider;
     public AudioMixer musicAudioMixer;
+    public AudioMixer sfxAudioMixer;
 
     //Called when the script is being loaded
     private void Awake()
@@ -23,7 +24,7 @@ public class OptionsMenu : MonoBehaviour
     {
         //Set the audio mixers volume to the value, value of slider is between -80 and 0,
         //These are the min/max values of the audio mixer
-        musicAudioMixer.SetFloat("Volume", value);
+        musicAudioMixer.SetFloat("VolumeMusic", value);
         //Set the player prefs Volume value to the sliders value
         PlayerPrefs.SetFloat("Volume", value);
         
@@ -31,8 +32,9 @@ public class OptionsMenu : MonoBehaviour
     //Called when the value of the SFX slider is changed
     public void SFXSlider(float value)
     {
-        //This will change the value of the SFX volume mixer, not yet implemented
-        Debug.Log(value);
+        //Set the audio mixers volume to the value, value of slider is between -80 and 0,
+        //These are the min/max values of the audio mixer
+        sfxAudioMixer.SetFloat("VolumeSFX", value);
         //Set the player prefs Volume value to the sliders value
         PlayerPrefs.SetFloat("SFXV", value);
     }

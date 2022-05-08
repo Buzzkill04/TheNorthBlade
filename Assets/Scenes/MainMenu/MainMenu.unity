@@ -3224,6 +3224,8 @@ MonoBehaviour:
   animator: {fileID: 5877515345834441759}
   errorScreen: {fileID: 2095198468}
   errorScreenText: {fileID: 602905394}
+  musicAudioMixer: {fileID: 24100000, guid: d32ceb2b930d71042b6eda697159a82f, type: 2}
+  sfxAudioMixer: {fileID: 24100000, guid: d70997b87ce61264c97123226e28a59a, type: 2}
 --- !u!1 &1884120897
 GameObject:
   m_ObjectHideFlags: 0
@@ -3279,6 +3281,7 @@ MonoBehaviour:
   sfxSlider: {fileID: 1394408034}
   musicSlider: {fileID: 2129911064}
   musicAudioMixer: {fileID: 24100000, guid: d32ceb2b930d71042b6eda697159a82f, type: 2}
+  sfxAudioMixer: {fileID: 24100000, guid: d70997b87ce61264c97123226e28a59a, type: 2}
 --- !u!1 &1903829342
 GameObject:
   m_ObjectHideFlags: 0

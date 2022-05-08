@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 
 public class MainMenu : MonoBehaviour
 {
@@ -12,6 +13,16 @@ public class MainMenu : MonoBehaviour
     //The error screen game object and the text on it
     public GameObject errorScreen;
     public Text errorScreenText;
+    public AudioMixer musicAudioMixer;
+    public AudioMixer sfxAudioMixer;
+
+    // Start is called before the first frame update
+    private void Start()
+    {
+        //Set the values to the music and SFX to the saved player value
+        musicAudioMixer.SetFloat("VolumeMusic", PlayerPrefs.GetFloat("Volume"));
+        sfxAudioMixer.SetFloat("VolumeSFX", PlayerPrefs.GetFloat("SFXV"));
+    }
 
     //Called when continue game is called
     public void ContinueGame()

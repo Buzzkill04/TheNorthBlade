@@ -15,9 +15,7 @@ public class CameraFollow : MonoBehaviour
     public float XBounds2;
     public float YBounds1;
     public float YBounds2;
-    //The offset for the Y camera to keep the camera in the correct area
-    public float offsetY;
-    
+
 
     // Update is called once per frame
     void Update()
@@ -27,7 +25,7 @@ public class CameraFollow : MonoBehaviour
         //Clamp the x position between the bounds so that the camera doesnt go beyond the worlds bounds
         //We also need to clamp on the y axis for levels that have more verticality 
         sceneCam.transform.position = new Vector3(Mathf.Clamp(characterToFollow.transform.position.x, XBounds1, XBounds2), 
-                                                    Mathf.Clamp(characterToFollow.transform.position.y + offsetY, YBounds1, YBounds2),  
+                                                    Mathf.Clamp(characterToFollow.transform.position.y, YBounds1, YBounds2),  
                                                         sceneCamZ);
     }
 }
