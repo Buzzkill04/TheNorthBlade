@@ -20,8 +20,8 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         //Set the values to the music and SFX to the saved player value
-        musicAudioMixer.SetFloat("VolumeMusic", PlayerPrefs.GetFloat("Volume"));
-        sfxAudioMixer.SetFloat("VolumeSFX", PlayerPrefs.GetFloat("SFXV"));
+        musicAudioMixer.SetFloat("Volume", PlayerPrefs.GetFloat("Volume"));
+        sfxAudioMixer.SetFloat("Volume", PlayerPrefs.GetFloat("SFXV"));
     }
 
     //Called when continue game is called
@@ -29,11 +29,14 @@ public class MainMenu : MonoBehaviour
     {
         try
         {
+            //Load the player data
             PlayerData savedPlayerData = SaveSystem.LoadPlayer();
+            //Move to the saved scene
             StartCoroutine(LoadNextScene(savedPlayerData.sceneBuildIndex));
         }
         catch (Exception)
         {
+            //If there was no save file found enable the error screen
             errorScreen.SetActive(true);
             errorScreenText.text = "No Save File Found!";
         }

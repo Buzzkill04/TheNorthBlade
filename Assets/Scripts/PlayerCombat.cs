@@ -67,6 +67,8 @@ public class PlayerCombat : MonoBehaviour
         animator.SetTrigger("Attack");
         //get all the enemies in range and kill them
         GetAndKillEnemies();
+        //Play the attack audio
+        FindObjectOfType<AudioManager>().playSound("attack");
     }
     //Skeleton Scout Ability
     public void SSAbility()
@@ -79,6 +81,7 @@ public class PlayerCombat : MonoBehaviour
         charRB.AddForce(transform.right * 2500);
         //reset the ability status of the player
         characterAbilityStatus = 0;
+        FindObjectOfType<AudioManager>().playSound("attack");
     }
     //Swordsman ability
     public void SMAbility()
@@ -89,6 +92,7 @@ public class PlayerCombat : MonoBehaviour
         playerLifeScript.playerHealth = 50;
         //Reset the player's ability status
         characterAbilityStatus = 0;
+        FindObjectOfType<AudioManager>().playSound("attack");
     }
     //Wizard ability
     public void WIZAbility()
@@ -101,6 +105,7 @@ public class PlayerCombat : MonoBehaviour
         Instantiate(fireballPrefab, AttackArea.position, AttackArea.rotation);
         //Reset the ability status
         characterAbilityStatus = 0;
+        FindObjectOfType<AudioManager>().playSound("attack");
     }
 
 

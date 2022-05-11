@@ -24,7 +24,7 @@ public class OptionsMenu : MonoBehaviour
     {
         //Set the audio mixers volume to the value, value of slider is between -80 and 0,
         //These are the min/max values of the audio mixer
-        musicAudioMixer.SetFloat("VolumeMusic", value);
+        musicAudioMixer.SetFloat("Volume", value);
         //Set the player prefs Volume value to the sliders value
         PlayerPrefs.SetFloat("Volume", value);
         
@@ -34,7 +34,7 @@ public class OptionsMenu : MonoBehaviour
     {
         //Set the audio mixers volume to the value, value of slider is between -80 and 0,
         //These are the min/max values of the audio mixer
-        sfxAudioMixer.SetFloat("VolumeSFX", value);
+        sfxAudioMixer.SetFloat("Volume", value);
         //Set the player prefs Volume value to the sliders value
         PlayerPrefs.SetFloat("SFXV", value);
     }

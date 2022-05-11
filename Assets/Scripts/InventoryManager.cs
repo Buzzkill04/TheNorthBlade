@@ -29,14 +29,20 @@ public class InventoryManager : MonoBehaviour
                 case "Pineapple":
                     numPinapple++;
                     Destroy(collision.gameObject);
+                    //play the pickup fruit sound
+                    FindObjectOfType<AudioManager>().playSound("pickupFruit");
                     break;
                 case "Peach":
                     numPeach++;
                     Destroy(collision.gameObject);
+                    //play the pickup fruit sound
+                    FindObjectOfType<AudioManager>().playSound("pickupFruit");
                     break;
                 case "Strawberry":
                     numStrawberry++;
                     Destroy(collision.gameObject);
+                    //play the pickup fruit sound
+                    FindObjectOfType<AudioManager>().playSound("pickupFruit");
                     break;
                 default:
                     break;

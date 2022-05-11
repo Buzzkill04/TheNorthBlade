@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &958015752895225706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 958015752895225684}
+  - component: {fileID: 958015752895225685}
+  m_Layer: 0
+  m_Name: AudioManger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &958015752895225684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958015752895225706}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.477736, y: 1.0192549, z: -4.1578}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &958015752895225685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 958015752895225706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46d9c6012c57db54197fe653c3b511c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - audioClip: {fileID: 8300000, guid: f7ec3301791ae054582d53e1257e5de9, type: 3}
+    audioMixerGroup: {fileID: 24300002, guid: d32ceb2b930d71042b6eda697159a82f, type: 2}
+    clipName: music
+    clipType: Music
+    clipSource: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: 24888da12d01ee841a3385c70498ea1d, type: 3}
+    audioMixerGroup: {fileID: 24300002, guid: d70997b87ce61264c97123226e28a59a, type: 2}
+    clipName: pickupFruit
+    clipType: SFX
+    clipSource: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: 294ebc84989ef9144be2cc9100248fa2, type: 3}
+    audioMixerGroup: {fileID: 24300002, guid: d70997b87ce61264c97123226e28a59a, type: 2}
+    clipName: levelUp
+    clipType: SFX
+    clipSource: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: ca8d2e52f5825e04ca1cab14b2e311be, type: 3}
+    audioMixerGroup: {fileID: 24300002, guid: d70997b87ce61264c97123226e28a59a, type: 2}
+    clipName: jump
+    clipType: SFX
+    clipSource: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: bf2bbf78a092f1145a3693789293b47b, type: 3}
+    audioMixerGroup: {fileID: 24300002, guid: d70997b87ce61264c97123226e28a59a, type: 2}
+    clipName: hit
+    clipType: SFX
+    clipSource: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: 1d7db827f8911454bbd82228a8ee6676, type: 3}
+    audioMixerGroup: {fileID: 24300002, guid: d70997b87ce61264c97123226e28a59a, type: 2}
+    clipName: attack
+    clipType: SFX
+    clipSource: {fileID: 0}
+  - audioClip: {fileID: 8300000, guid: e205f88ad73beae48ad8f9e876d19dd0, type: 3}
+    audioMixerGroup: {fileID: 24300002, guid: d70997b87ce61264c97123226e28a59a, type: 2}
+    clipName: heal
+    clipType: SFX
+    clipSource: {fileID: 0}

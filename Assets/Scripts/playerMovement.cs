@@ -33,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
         {
             jump = true;
+            if (animator.GetBool("Grounded"))
+            {
+                //Play the jump sound
+                FindObjectOfType<AudioManager>().playSound("jump");
+            }
         }
         //if the character is falling or jumping set the animator parameters jump to true and grounded to false
         if (charRB.velocity.y != 0)

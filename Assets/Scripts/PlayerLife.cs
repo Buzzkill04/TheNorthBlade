@@ -120,6 +120,8 @@ public class PlayerLife : MonoBehaviour
             playerXP = 0;
             //Play the level up animation
             effectsAnimator.SetTrigger("LevelUp");
+            //Play the level up sound
+            FindObjectOfType<AudioManager>().playSound("levelUp");
         }
     }
 
@@ -129,12 +131,16 @@ public class PlayerLife : MonoBehaviour
         //set hurt animator paramater take away HP
         animator.SetTrigger("Hurt");
         playerHealth -= damage;
+        //Play the hit sound
+        FindObjectOfType<AudioManager>().playSound("hit");
     }
 
     //Called when player heals
     public void PlayerHeal(float healAmount)
     {
         playerHealth += healAmount;
+        //Play the heal sound
+        FindObjectOfType<AudioManager>().playSound("heal");
         if (playerHealth > maxPlayerHealth)
         {
             playerHealth = maxPlayerHealth;
