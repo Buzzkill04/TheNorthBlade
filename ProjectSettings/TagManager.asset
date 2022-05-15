@@ -13,6 +13,7 @@ TagManager:
   - Start
   - End
   - WaterDeath
+  - NPC
   layers:
   - Default
   - TransparentFX

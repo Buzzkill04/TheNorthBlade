@@ -6,17 +6,25 @@ public class TheNorthBlade : MonoBehaviour
 {
     //Whether the item has been collected
     public bool collected = false;
+    //The scene camera
+    public Camera sceneCam;
+
+    private void Start()
+    {
+        sceneCam = FindObjectOfType<Camera>();
+    }
 
     // Update is called once per frame
     void Update()
     {
+       
         //If the item was collected
         if (collected)
         {
             //Get the centre of the screen
-            Vector2 centreOfScreen = new Vector2(Screen.width / 2, Screen.height / 2);
+            Vector3 centreOfScreen = new Vector3(Screen.width / 2, Screen.height / 2, 0);
             //Move the north blade to the centre of the screen
-            transform.position = Vector2.MoveTowards(transform.position, centreOfScreen, 0.01f);
+            transform.position = Vector3.MoveTowards(transform.position, sceneCam.ScreenToWorldPoint(centreOfScreen), 0.005f);
         }
         else
         {
