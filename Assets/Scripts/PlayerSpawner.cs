@@ -9,22 +9,31 @@ public class PlayerSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //If the character creator was used (The player made a new game at the start of the play session)
-        if (CharacterCreator.characterPrefabName != null)
+        if (!MainMenu.isMultiplayer)
         {
-            //Get the prefab name from the character creator
-            characterPrefabName = CharacterCreator.characterPrefabName;
+            //If the character creator was used (The player made a new game at the start of the play session)
+            if (CharacterCreator.characterPrefabName != null)
+            {
+                //Get the prefab name from the character creator
+                characterPrefabName = CharacterCreator.characterPrefabName;
 
-        }
-        else
-        {
+            }
+            else
+            {
             //If the player used continue, load the player's prefab name
-            characterPrefabName = LoadPlayerPrefabName();
+                characterPrefabName = LoadPlayerPrefabName();
+            }
+            //Get the prefab game object based from the name
+            characterPrefab = (GameObject)Resources.Load(@$"Prefabs/{characterPrefabName}");
+            //Create the prefab
+            Instantiate(characterPrefab, transform.position, transform.rotation);
         }
-        //Get the prefab game object based from the name
-        characterPrefab = (GameObject)Resources.Load(@$"Prefabs/{characterPrefabName}");
-        //Create the prefab
-        Instantiate(characterPrefab, transform.position, transform.rotation);
+        else if (MainMenu.isMultiplayer)
+        {
+            //Get the prefab game object based from the name
+            characterPrefab = (GameObject)Resources.Load(@$"Prefabs/{CharacterCreator.characterPrefabName}");
+            Instantiate(characterPrefab, transform.position, transform.rotation);
+        }
     }
 
     public string LoadPlayerPrefabName()

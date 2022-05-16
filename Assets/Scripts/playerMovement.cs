@@ -16,6 +16,10 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     //Rigidbody
     private Rigidbody2D charRB;
+    //The movement axes to look for
+    public string movementAxis = "Horizontal";
+    //The jump button to listen for
+    public string jumpButton = "Jump";
 
     private void Start()
     {
@@ -27,10 +31,10 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Get the player input on the horizontal axis and multiply by the movement speed
-        horizontalMove = Input.GetAxisRaw("Horizontal") * movementSpeed;
+        horizontalMove = Input.GetAxisRaw(movementAxis) * movementSpeed;
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
         //If the player jumps, set jump to true
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown(jumpButton))
         {
             jump = true;
             if (animator.GetBool("Grounded"))

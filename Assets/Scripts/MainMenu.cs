@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
     public Text errorScreenText;
     public AudioMixer musicAudioMixer;
     public AudioMixer sfxAudioMixer;
+    public static bool isMultiplayer = false;
 
     // Start is called before the first frame update
     private void Start()
@@ -54,7 +55,10 @@ public class MainMenu : MonoBehaviour
     //Called when multiplayer is pressed
     public void Multiplayer()
     {
-        //TODO
+        //set the multiplayer variable to true, so that other scripts know multiplayer was selected
+        isMultiplayer = true;
+        //The character creator has a build index of 1
+        StartCoroutine(LoadNextScene(1));
     }
 
     public void ExitButton()

@@ -22,6 +22,10 @@ public class PlayerCombat : MonoBehaviour
     public int characterAbilityStatus = 0;
     //Character type
     private string characterType;
+    //The attack button to listen to
+    public string attackButton = "Attack";
+    //If the player is the second player in a multiplayer game
+    public bool isSecondPlayer = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +44,7 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
         //If the player presses q and they are not currently jumping
-        if (Input.GetButtonDown("Attack") && !animator.GetBool("Jump"))
+        if (Input.GetButtonDown(attackButton) && !animator.GetBool("Jump"))
         {
             Attack();
         }
@@ -114,6 +118,33 @@ public class PlayerCombat : MonoBehaviour
     {
         //Get all the enemies in attackRange of attackArea
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(AttackArea.position, attackRange, enemyLayer);
+        if (MainMenu.isMultiplayer)
+        {
+            if (isSecondPlayer)
+            {
+                //Get the layer mask of the player
+                LayerMask playerLayer = LayerMask.GetMask("Player");
+                //Get the hit player
+                Collider2D hitPlayer1 = Physics2D.OverlapCircle(AttackArea.position, attackRange, playerLayer);
+                //If the hit player is not equal to null
+                if (hitPlayer1 != null)
+                {
+                    //damage the player
+                    hitPlayer1.GetComponent<PlayerLife>().PlayerTakeDamage(playerAttackDamage);
+                }
+                return;
+            }
+            //If the player attacking is not the second player
+            Collider2D hitPlayer2 = Physics2D.OverlapCircle(AttackArea.position, attackRange, enemyLayer);
+            //If it is not equal to null
+            if (hitPlayer2 != null)
+            {
+                //damage the player
+                hitPlayer2.GetComponent<PlayerLife>().PlayerTakeDamage(playerAttackDamage);
+            }
+            return;
+
+        }
         //For each enemy that was in range of the attack when it occured 
         foreach (Collider2D enemy in hitEnemies)
         {
