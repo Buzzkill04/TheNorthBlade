@@ -17,6 +17,8 @@ public class MultiplayerSpawner : MonoBehaviour
         GameObject spawnedPlayer = Instantiate(characterPrefab, transform.position, transform.rotation);
         //Make the second player layer to the enemy layer
         spawnedPlayer.layer = 9;
+        //Give the second player the Enemy Tag
+        spawnedPlayer.tag = "Enemy";
         //Change the movement and attack keys and set the isSecondPlayer bool to true
         spawnedPlayer.GetComponent<PlayerCombat>().attackButton = "AttackMultiplayer";
         spawnedPlayer.GetComponent<PlayerCombat>().isSecondPlayer = true;

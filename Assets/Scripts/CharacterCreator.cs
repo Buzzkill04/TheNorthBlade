@@ -192,8 +192,6 @@ public class CharacterCreator : MonoBehaviour
             }
             else if (MainMenu.isMultiplayer && characterPrefabName != null && MultiplayerCharacterPrefabName != null)
             {
-                Debug.Log(characterPrefabName);
-                Debug.Log(MultiplayerCharacterPrefabName);
                 //Start the duel
                 StartCoroutine(LoadNextScene(9));
             }

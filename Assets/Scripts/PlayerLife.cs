@@ -150,9 +150,14 @@ public class PlayerLife : MonoBehaviour
     //Called when a player dies
     public void PlayerDeath()
     {
-        //Get the levelUI game object, then get the deathUI (index 3), this will get the transform
-        //So we need to get the original game object and set it to being active
-        levelUI.transform.GetChild(3).gameObject.SetActive(true);
+        //If multiplayer is false, this is done becuase the way the death menu is opened is different 
+        //in a multiplayer battle
+        if (!MainMenu.isMultiplayer)
+        {
+            //Get the levelUI game object, then get the deathUI (index 3), this will get the transform
+            //So we need to get the original game object and set it to being active
+            levelUI.transform.GetChild(3).gameObject.SetActive(true);
+        }
         //Destroy the playerMovementScript so that the player is unable to move.
         Destroy(playerMovementScript);
     }
