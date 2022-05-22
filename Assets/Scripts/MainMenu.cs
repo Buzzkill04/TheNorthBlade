@@ -48,6 +48,9 @@ public class MainMenu : MonoBehaviour
     public void NewGame()
     {
         SaveSystem.DeleteSaveFile();
+        //Reset the character type and prefab name
+        CharacterCreator.characterType = null;
+        CharacterCreator.characterPrefabName = null;
         //Load the next scene, on a new game the scene should be the character creator,
         //The character creator has a build index of 1
         StartCoroutine(LoadNextScene(1));
