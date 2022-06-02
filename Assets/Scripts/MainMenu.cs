@@ -60,6 +60,11 @@ public class MainMenu : MonoBehaviour
     {
         //set the multiplayer variable to true, so that other scripts know multiplayer was selected
         isMultiplayer = true;
+        //Reset the character creator statics
+        CharacterCreator.characterPrefabName = null;
+        CharacterCreator.characterType = null;
+        CharacterCreator.MultiplayerCharacterPrefabName = null;
+        CharacterCreator.MultiplayerCharacterType = null;
         //The character creator has a build index of 1
         StartCoroutine(LoadNextScene(1));
     }

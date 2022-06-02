@@ -67,6 +67,10 @@ public class PlayerLife : MonoBehaviour
         animator = playerMovementScript.animator;
         try
         {
+            if (MainMenu.isMultiplayer)
+            {
+                throw new Exception();
+            }
             LoadProgress();
         }
         catch (Exception e)
